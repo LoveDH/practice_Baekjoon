@@ -12,7 +12,12 @@ from sys import stdin
 
 def climb(num):
     score = [stairs[0]]
-    score.append(max(score[0]+stairs[1], stairs[1]))
+    if num == 1:
+        return score[0]
+    score.append(score[0]+stairs[1])
+    if num == 2:
+        return score[-1]
+
     score.append(max(stairs[2]+score[0], stairs[2]+stairs[1]))
 
     for step in range(3,num):
